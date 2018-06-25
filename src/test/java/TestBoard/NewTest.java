@@ -18,47 +18,47 @@ import com.qainfotech.tap.training.snl.api.PlayerExistsException;
 import junit.framework.Assert;
 
 public class NewTest {
-	accessBoardFunction createNewBoardForTestingWhtherPlayerWithGivenNameExist;
-	accessBoardFunction createNewBoardForTestingNumberOfPlayers;
-	accessBoardFunction createNewBoardForTestingWhetherPlayerIsAdded;
+	accessBoardFunction ObjectForOnePlayer;
+	accessBoardFunction ObjectForFourPlayer;
+	accessBoardFunction ObjectForOnePlayerForAnotherPurposes;
   @BeforeClass
   void CreateObjectForaccessBoardFunction() throws FileNotFoundException, UnsupportedEncodingException, IOException {
-	  createNewBoardForTestingWhtherPlayerWithGivenNameExist=new accessBoardFunction();
-	  createNewBoardForTestingNumberOfPlayers=new accessBoardFunction();
-	  createNewBoardForTestingWhetherPlayerIsAdded=new accessBoardFunction();
+	  ObjectForOnePlayer=new accessBoardFunction();
+	  ObjectForFourPlayer=new accessBoardFunction();
+	  ObjectForOnePlayerForAnotherPurposes=new accessBoardFunction();
   }
   
   @Test
   public void checkWhetherPlayerIsAddedOrNot() throws FileNotFoundException, UnsupportedEncodingException, PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption, IOException {
-	  createNewBoardForTestingWhetherPlayerIsAdded.whetherPlayerIsAddedOrNot();	  
+	  ObjectForOnePlayerForAnotherPurposes.whetherPlayerIsAddedOrNot();	  
   }
   @Test(dependsOnMethods="checkWhetherPlayerIsAddedOrNot")
   public void testWhenPlayerNameIsSame() throws FileNotFoundException, UnsupportedEncodingException, PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption, IOException {
-	  createNewBoardForTestingWhtherPlayerWithGivenNameExist.whenPlayerNameIsSame();
+	  ObjectForOnePlayer.whenPlayerNameIsSame();
   }
   @Test
   public void testForNumberOfMaxPlayer() throws FileNotFoundException, UnsupportedEncodingException, PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption, IOException {
-	  createNewBoardForTestingNumberOfPlayers.forNumberOfMaxPlayer();
+	  ObjectForFourPlayer.forNumberOfMaxPlayer();
   }
   @Test(dependsOnMethods="checkWhetherPlayerIsAddedOrNot")
   public void testWhenGameIsInProgress() throws FileNotFoundException, UnsupportedEncodingException, InvalidTurnException {
-	  createNewBoardForTestingWhetherPlayerIsAdded.whenGameIsInProgress();
+	  ObjectForOnePlayerForAnotherPurposes.whenGameIsInProgress();
   }
   @Test
   public void deletePlayerUUIDNotExist() throws FileNotFoundException, UnsupportedEncodingException, NoUserWithSuchUUIDException {
-	  createNewBoardForTestingNumberOfPlayers.checkForDeletionOfPlayerIfGivenUuidDoesNotExist();
+	  ObjectForFourPlayer.checkForDeletionOfPlayerIfGivenUuidDoesNotExist();
   }
   @Test(dependsOnMethods="testForNumberOfMaxPlayer")
   public void whenPlayerRolldiceWithoutHavingItsTurn() throws InvalidTurnException, IOException {
-	  createNewBoardForTestingNumberOfPlayers.whenPlayerRolldiceWithoutHavingItsTurn();
+	  ObjectForFourPlayer.whenPlayerRolldiceWithoutHavingItsTurn();
   }
   @Test(dependsOnMethods="whenPlayerRolldiceWithoutHavingItsTurn")
   public void whenInvalidPlayerRolldiceWithoutHavingItsTurn() throws FileNotFoundException, UnsupportedEncodingException, InvalidTurnException {
-	  createNewBoardForTestingNumberOfPlayers.whenInvalidPlayerRolldiceWithoutHavingItsTurn();
+	  ObjectForFourPlayer.whenInvalidPlayerRolldiceWithoutHavingItsTurn();
   }
   @Test(dependsOnMethods="testWhenGameIsInProgress")
   public void deletePlayerUUIDExist() throws NoUserWithSuchUUIDException, JSONException, IOException {
-	  createNewBoardForTestingWhetherPlayerIsAdded.checkForDeletionOfPlayerIfGivenUuidExist();
+	  ObjectForOnePlayerForAnotherPurposes.checkForDeletionOfPlayerIfGivenUuidExist();
   }
   
 }
